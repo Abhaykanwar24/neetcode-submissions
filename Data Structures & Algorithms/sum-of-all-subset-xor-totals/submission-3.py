@@ -1,0 +1,18 @@
+class Solution:
+    def subsetXORSum(self, nums: List[int]) -> int:
+        
+
+        def backtrack(i , total):
+            if i == len(nums):
+                return total
+
+            
+            include = backtrack(i+1 , total ^ nums[i])
+            skip = backtrack(i+1 , total)
+
+            return include + skip
+
+
+
+        return backtrack(0,0)
+                
