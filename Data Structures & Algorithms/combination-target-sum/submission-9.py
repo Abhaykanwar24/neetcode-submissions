@@ -1,0 +1,25 @@
+class Solution:
+    def combinationSum(self, nums: List[int], target: int) -> List[List[int]]:
+        res_comb = []
+        cur_comb = []
+
+        def backtrack(i , total):
+            if total == target:
+                res_comb.append(cur_comb.copy())
+                return 
+            if i >= len(nums) or total > target :
+                return
+
+            cur_comb.append(nums[i])
+            backtrack(i , nums[i] + total)
+            cur_comb.pop()
+            backtrack(i + 1 , total)
+
+
+        backtrack(0 , 0)
+
+        return res_comb
+
+
+        
+            
